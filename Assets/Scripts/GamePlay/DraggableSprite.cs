@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using System;
+using UnityEngine;
 
-public class Draggable : MonoBehaviour
+public class DraggableSprite : MonoBehaviour
 {
 	private bool isDragging = false;
 	private Vector2 offset;
@@ -17,7 +17,6 @@ public class Draggable : MonoBehaviour
 			if (hit.collider != null && hit.collider.transform == transform)
 			{
 				isDragging = true;
-				// 计算鼠标与物体中心点偏移，避免拖拽时物体瞬移到鼠标中心
 				offset = (Vector2)transform.position - hit.point;
 			}
 		}
@@ -35,7 +34,4 @@ public class Draggable : MonoBehaviour
 			isDragging = false;
 		}
 	}
-
-	// 外部获取拖拽状态（方便你判断两个Box2D是否重叠）
-	public bool IsDragging() => isDragging;
 }

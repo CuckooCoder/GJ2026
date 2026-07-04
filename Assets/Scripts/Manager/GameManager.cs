@@ -7,7 +7,7 @@ public class GameManager : SingletonMono<GameManager>
 {
 	public string mainSceneName = "Main";
 	public List<string> levels;
-	int curLevelIndex = 0;
+	public int curLevelIndex = 0;
 
 	public void LoadScene(string sceneName)
 	{
@@ -16,9 +16,17 @@ public class GameManager : SingletonMono<GameManager>
 
 	public void LoadScene(int sceneIndex)
 	{
-		curLevelIndex = sceneIndex;
-		Save();
-		SceneManager.LoadScene(levels[sceneIndex]);
+		if (sceneIndex >= 0 && sceneIndex < levels.Count)
+		{
+			curLevelIndex = sceneIndex;
+			Save();
+			SceneManager.LoadScene(levels[sceneIndex]);
+		}
+		else
+		{
+
+			LoadScene(mainSceneName);
+		}
 	}
 
 	public void NewGame()
