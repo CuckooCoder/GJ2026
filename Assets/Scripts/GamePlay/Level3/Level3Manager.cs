@@ -60,10 +60,10 @@ public class Level3Manager : LevelManager
 	IEnumerator SendMesaages(int index)
 	{
 		handAnimator.enabled = true;
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(messageInterval);
 		sendMessages[index].SetActive(true);
 		ScrollToBottomImmediately();
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(messageInterval);
 		switch (index)
 		{
 			case 0:

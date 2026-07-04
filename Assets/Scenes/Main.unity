@@ -1603,6 +1603,7 @@ MonoBehaviour:
   levels:
   - Level1
   - Level2
+  - Level3
   curLevelIndex: 0
   control: 1
 --- !u!4 &1626084744
