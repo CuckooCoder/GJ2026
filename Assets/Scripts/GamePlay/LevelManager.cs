@@ -9,30 +9,37 @@ public class LevelManager : MonoBehaviour
 
 	private void Start()
 	{
+		TransitionEffect.Instance.FadeIn();
 		StartCoroutine(DelayInvoke(totalTime, CheckComplete));
 	}
 
-	protected void Reload()
+	public void Reload()
 	{
 		GameManager.Instance.LoadScene(GameManager.Instance.curLevelIndex);
 	}
 
-	protected void LoadNextLevel()
+	public void LoadNextLevel()
 	{
 		GameManager.Instance.LoadScene(GameManager.Instance.curLevelIndex + 1);
 	}
 
-	protected virtual void CheckComplete()
+	public virtual void CheckComplete()
 	{
 		StopAllCoroutines();
 	}
 
-	protected virtual void Fail()
+	public virtual void Success()
+	{
+		StopAllCoroutines();
+		TransitionEffect.Instance.FadeOut(LoadNextLevel);
+	}
+
+	public virtual void Fail()
 	{
 		StopAllCoroutines();
 	}
 
-	protected virtual IEnumerator DelayInvoke(float delay, Action action)
+	public virtual IEnumerator DelayInvoke(float delay, Action action)
 	{
 		yield return new WaitForSeconds(delay);
 		action?.Invoke();

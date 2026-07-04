@@ -9,23 +9,18 @@ public class GameManager : SingletonMono<GameManager>
 	public List<string> levels;
 	public int curLevelIndex = 0;
 
-	public void LoadScene(string sceneName)
-	{
-		SceneManager.LoadScene(sceneName);
-	}
-
 	public void LoadScene(int sceneIndex)
 	{
 		if (sceneIndex >= 0 && sceneIndex < levels.Count)
 		{
 			curLevelIndex = sceneIndex;
 			Save();
-			SceneManager.LoadScene(levels[sceneIndex]);
+			TransitionEffect.Instance.FadeOut(() => SceneManager.LoadScene(levels[sceneIndex]));
 		}
 		else
 		{
 
-			LoadScene(mainSceneName);
+			TransitionEffect.Instance.FadeOut(() => SceneManager.LoadScene(mainSceneName));
 		}
 	}
 
