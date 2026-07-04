@@ -16,6 +16,7 @@ public class MainSceneController : MonoBehaviour
 		continueButton.onClick.AddListener(Continue);
 		creditButton.onClick.AddListener(Credit);
 		quitButton.onClick.AddListener(Quit);
+		TransitionEffect.Instance.FadeIn();
 	}
 
 	void NewGame()

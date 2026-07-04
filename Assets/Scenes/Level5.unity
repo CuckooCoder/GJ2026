@@ -939,7 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level5Manager
   totalTime: 20
-  checkTime: 3
+  checkTime: 1
   audioSource: {fileID: 0}
   isHight: 0
   isLow: 0

@@ -20,6 +20,11 @@ public class GameManager : SingletonMono<GameManager>
 		audioSource = GetComponent<AudioSource>();
 	}
 
+	private void Start()
+	{
+		PlayBgm(mainBgm);
+	}
+
 	public void PlayBgm(AudioClip clip)
 	{
 		audioSource.clip = clip;
@@ -63,12 +68,12 @@ public class GameManager : SingletonMono<GameManager>
 
 	public void HappyEnd()
 	{
-		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(happyEndSceneName); });
+		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(happyEndSceneName); audioSource.Stop(); });
 	}
 
 	public void BadEnd()
 	{
-		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(badEndSceneName); });
+		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(badEndSceneName); audioSource.Stop(); });
 	}
 
 	public void Quit()
