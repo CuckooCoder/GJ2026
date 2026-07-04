@@ -6,6 +6,8 @@ public class Level1Manager : LevelManager
 	public SpriteRenderer playerSprite;
 	public List<Sprite> emoSprites;
 	public int curEmoIndex = 0;
+	public GameObject end1Panell;
+	public GameObject end1Panel2;
 	Coroutine immediatelyCheckCoroutine;
 
 	public void ChangeEmo()
@@ -19,27 +21,30 @@ public class Level1Manager : LevelManager
 		immediatelyCheckCoroutine = StartCoroutine(DelayInvoke(checkTime, CheckComplete));
 	}
 
-	protected override void CheckComplete()
+	public override void CheckComplete()
 	{
 		base.CheckComplete();
 		switch (curEmoIndex)
 		{
 			case 0:
 				//无表情
+				end1Panell.SetActive(true);
 				Debug.Log("无表情");
 				break;
 			case 1:
 				//笑
+				end1Panel2.SetActive(true);
 				Debug.Log("笑");
 				break;
 			case 2:
 				//哭
+				Success();
 				Debug.Log("哭");
 				break;
 		}
 	}
 
-	protected override void Fail()
+	public override void Fail()
 	{
 		base.Fail();
 	}

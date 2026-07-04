@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -19,12 +20,12 @@ public class TransitionEffect : SingletonMono<TransitionEffect>
 		StartCoroutine(Fade(0f, maxRadius, fadeDuration));
 	}
 
-	public void FadeOut()
+	public void FadeOut(Action onEnd = null)
 	{
-		StartCoroutine(Fade(maxRadius, 0f, fadeDuration));
+		StartCoroutine(Fade(maxRadius, 0f, fadeDuration, onEnd));
 	}
 
-	IEnumerator Fade(float start, float end, float time)
+	IEnumerator Fade(float start, float end, float time, Action onEnd = null)
 	{
 		float t = 0;
 		while (t < time)
@@ -34,5 +35,6 @@ public class TransitionEffect : SingletonMono<TransitionEffect>
 			image.material.SetFloat("_Radius", value);
 			yield return null;
 		}
+		onEnd?.Invoke();
 	}
 }
