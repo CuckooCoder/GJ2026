@@ -12,10 +12,13 @@ public class ClickSprite : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			var hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-			if (hit.collider != null && hit.collider.transform == transform)
+			var hits = Physics2D.RaycastAll(ray.origin, ray.direction, Mathf.Infinity);
+			foreach (var hit in hits)
 			{
-				pressTime = Time.time;
+				if (hit.collider.transform == transform)
+				{
+					pressTime = Time.time;
+				}
 			}
 		}
 

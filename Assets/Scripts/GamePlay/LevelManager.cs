@@ -6,6 +6,8 @@ public class LevelManager : MonoBehaviour
 {
 	public float totalTime = 10;
 	public float checkTime = 3;
+	protected Coroutine immediatelyCheckCoroutine;
+
 
 	private void Start()
 	{
@@ -31,7 +33,7 @@ public class LevelManager : MonoBehaviour
 	public virtual void Success()
 	{
 		StopAllCoroutines();
-		TransitionEffect.Instance.FadeOut(LoadNextLevel);
+		LoadNextLevel();
 	}
 
 	public virtual void Fail()

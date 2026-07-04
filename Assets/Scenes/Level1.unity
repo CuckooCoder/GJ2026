@@ -1719,6 +1719,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6a8a3e87fe047ae43897b5db1f851c92, type: 3}
   - {fileID: 21300000, guid: aeec79cde5fa4644a9963de110467e84, type: 3}
   curEmoIndex: 0
+  endPanel: {fileID: 1355385976}
   end1Panell: {fileID: 1403577659}
   end1Panel2: {fileID: 469525593}
 --- !u!4 &899840375
@@ -2073,7 +2074,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1355385977
 MonoBehaviour:
   m_ObjectHideFlags: 0

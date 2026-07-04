@@ -1,10 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
-public class DraggableSprite : MonoBehaviour
+public class Draggable : MonoBehaviour
 {
 	private bool isDragging = false;
 	private Vector2 offset;
+	public bool lockX;
+	public bool lockY;
 
 	void Update()
 	{
@@ -12,12 +14,22 @@ public class DraggableSprite : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-			var hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-
-			if (hit.collider != null && hit.collider.transform == transform)
+			var hits = Physics2D.RaycastAll(ray.origin, ray.direction, Mathf.Infinity);
+			foreach (var hit in hits)
 			{
-				isDragging = true;
-				offset = (Vector2)transform.position - hit.point;
+				if (hit.collider.transform == transform)
+				{
+					isDragging = true;
+					offset = (Vector2)transform.position - hit.point;
+					if (lockX)
+					{
+						offset.x = 0;
+					}
+					if (lockY)
+					{
+						offset.y = 0;
+					}
+				}
 			}
 		}
 
