@@ -41,6 +41,7 @@ public class Level4Manager : LevelManager
 			StopCoroutine(immediatelyCheckCoroutine);
 		}
 		isPlayerStandUp = !isPlayerStandUp;
+		playerSpriteRender.GetComponent<AudioSource>().Play();
 		if (isPlayerStandUp)
 		{
 			playerSpriteRender.sprite = standSprite;
@@ -58,7 +59,7 @@ public class Level4Manager : LevelManager
 		yield return new WaitForSeconds(0.5f);
 		foreach (var animator in npcAnimators)
 		{
-			StartCoroutine(DelayInvoke(Random.Range(0f, 0.5f), () => animator.enabled = true));
+			StartCoroutine(DelayInvoke(Random.Range(0f, 0.5f), () => { animator.enabled = true;animator.GetComponent<AudioSource>().Play(); }));
 		}
 	}
 }

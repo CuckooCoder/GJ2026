@@ -16,6 +16,7 @@ public class Level2Manager : LevelManager
 	public GameObject end1Panel3;
 	public Image shootImage;
 	public float shootTime = 0.3f;
+	public AudioClip shootAudioClip;
 	Animator animator;
 	bool isPosed = false;
 	bool isOverlap = false;
@@ -102,6 +103,7 @@ public class Level2Manager : LevelManager
 
 	IEnumerator Shooting(Action onEnd = null)
 	{
+		audioSource.PlayOneShot(shootAudioClip);
 		float t = 0;
 		while (t < shootTime)
 		{

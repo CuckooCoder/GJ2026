@@ -6,10 +6,12 @@ public class LevelManager : MonoBehaviour
 {
 	public float totalTime = 20;
 	public float checkTime = 3;
+	public AudioSource audioSource;
 	protected Coroutine immediatelyCheckCoroutine;
 
 	protected virtual void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
 		GameManager.Instance.control = true;
 		TransitionEffect.Instance.FadeIn();
 		StartCoroutine(DelayInvoke(totalTime, CheckComplete));

@@ -13,6 +13,7 @@ public class Level3Manager : LevelManager
 	public float messageInterval = 1f;
 	public GameObject buttonRoot;
 	public Animator handAnimator;
+	public AudioClip messageClip;
 	public GameObject endPanel;
 	public GameObject end1Panell;
 	public GameObject end1Panel2;
@@ -73,6 +74,7 @@ public class Level3Manager : LevelManager
 		for (int i = 0; i < messages.Count; i++)
 		{
 			messages[i].SetActive(true);
+			audioSource.PlayOneShot(messageClip);
 			ScrollToBottomImmediately();
 			yield return new WaitForSeconds(messageInterval);
 		}

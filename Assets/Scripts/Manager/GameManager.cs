@@ -9,8 +9,22 @@ public class GameManager : SingletonMono<GameManager>
 	public string happyEndSceneName = "HE";
 	public string badEndSceneName = "BE";
 	public List<string> levels;
+	public List<AudioClip> levelBgms;
+	public AudioClip mainBgm;
 	public int curLevelIndex = 0;
 	public bool control = true;
+	public AudioSource audioSource;
+
+	protected override void Init()
+	{
+		audioSource = GetComponent<AudioSource>();
+	}
+
+	public void PlayBgm(AudioClip clip)
+	{
+		audioSource.clip = clip;
+		audioSource.Play();
+	}
 
 	public void LoadScene(int sceneIndex)
 	{
@@ -18,18 +32,18 @@ public class GameManager : SingletonMono<GameManager>
 		{
 			curLevelIndex = sceneIndex;
 			Save();
-			TransitionEffect.Instance.FadeOut(() => SceneManager.LoadScene(levels[sceneIndex]));
+			TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(levels[sceneIndex]); PlayBgm(levelBgms[sceneIndex]); });
 		}
 		else
 		{
 
-			TransitionEffect.Instance.FadeOut(() => SceneManager.LoadScene(mainSceneName));
+			TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(mainSceneName); PlayBgm(mainBgm); });
 		}
 	}
 
 	public void ReturnMain()
 	{
-		TransitionEffect.Instance.FadeOut(() => SceneManager.LoadScene(mainSceneName));
+		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(mainSceneName); PlayBgm(mainBgm); });
 	}
 
 	public void NewGame()
@@ -49,12 +63,12 @@ public class GameManager : SingletonMono<GameManager>
 
 	public void HappyEnd()
 	{
-		TransitionEffect.Instance.FadeOut(() => SceneManager.LoadScene(happyEndSceneName));
+		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(happyEndSceneName); });
 	}
 
 	public void BadEnd()
 	{
-		TransitionEffect.Instance.FadeOut(() => SceneManager.LoadScene(badEndSceneName));
+		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(badEndSceneName); });
 	}
 
 	public void Quit()
