@@ -1471,7 +1471,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626084742}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28c33ddd1b0fab84593a3fb7c01dfc35, type: 3}
   m_Name: 
@@ -1479,7 +1479,9 @@ MonoBehaviour:
   persistent: 1
   autoUnparentOnAwake: 1
   mainSceneName: Main
-  levels: []
+  levels:
+  - Level1
+  curLevelIndex: 0
 --- !u!4 &1626084744
 Transform:
   m_ObjectHideFlags: 0

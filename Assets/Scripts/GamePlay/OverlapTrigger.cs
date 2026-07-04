@@ -1,12 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class OverlapTrigger : MonoBehaviour
 {
 	public Collider2D targetTrigger;
 	public bool isOverlapping;
-	public Action onEnter;
-	public Action onExit;
+	public UnityEvent onEnter;
+	public UnityEvent onExit;
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
