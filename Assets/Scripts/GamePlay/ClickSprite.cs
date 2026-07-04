@@ -1,11 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class ClickSprite : MonoBehaviour
 {
 	private float pressTime;
 	public float clickDurationThreshold = 0.2f;
-	public Action onClick;
+	public UnityEvent onClick;
 
 	void Update()
 	{

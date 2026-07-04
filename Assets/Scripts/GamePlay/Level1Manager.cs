@@ -1,16 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Level1Manager : LevelManager
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+	public SpriteRenderer playerSprite;
+	public List<Sprite> emoSprites;
+	public int curEmoIndex = 0;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void ChangeEmo()
+	{
+		curEmoIndex = (curEmoIndex + 1) % emoSprites.Count;
+		playerSprite.sprite = emoSprites[curEmoIndex];
+	}
 }
