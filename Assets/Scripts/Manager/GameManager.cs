@@ -14,6 +14,7 @@ public class GameManager : SingletonMono<GameManager>
 	public int curLevelIndex = 0;
 	public bool control = true;
 	public AudioSource audioSource;
+	public GameObject pausePanel;
 
 	protected override void Init()
 	{
@@ -23,6 +24,14 @@ public class GameManager : SingletonMono<GameManager>
 	private void Start()
 	{
 		PlayBgm(mainBgm);
+	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			SetPause(Time.timeScale == 1);
+		}
 	}
 
 	public void PlayBgm(AudioClip clip)
@@ -74,6 +83,12 @@ public class GameManager : SingletonMono<GameManager>
 	public void BadEnd()
 	{
 		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(badEndSceneName); audioSource.Stop(); });
+	}
+
+	public void SetPause(bool pause)
+	{
+		Time.timeScale = pause ? 0 : 1;
+		pausePanel.SetActive(pause);
 	}
 
 	public void Quit()
