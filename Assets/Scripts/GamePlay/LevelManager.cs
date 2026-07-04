@@ -24,7 +24,12 @@ public class LevelManager : MonoBehaviour
 
 	protected virtual void CheckComplete()
 	{
+		StopAllCoroutines();
+	}
 
+	protected virtual void Fail()
+	{
+		StopAllCoroutines();
 	}
 
 	protected virtual IEnumerator DelayInvoke(float delay, Action action)
