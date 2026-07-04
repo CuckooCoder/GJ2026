@@ -63,7 +63,7 @@ public class Level3Manager : LevelManager
 		yield return new WaitForSeconds(messageInterval);
 		sendMessages[index].SetActive(true);
 		ScrollToBottomImmediately();
-		yield return new WaitForSeconds(messageInterval);
+		yield return new WaitForSeconds(checkTime);
 		switch (index)
 		{
 			case 0:

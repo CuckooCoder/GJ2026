@@ -39,6 +39,7 @@ public class LevelManager : MonoBehaviour
 	public virtual void Fail()
 	{
 		StopAllCoroutines();
+		Reload();
 	}
 
 	public virtual IEnumerator DelayInvoke(float delay, Action action)

@@ -9,10 +9,10 @@ public class ClickSprite : MonoBehaviour
 
 	void Update()
 	{
-		if (!GameManager.Instance.control)
-		{
-			return;
-		}
+		//if (!GameManager.Instance.control)
+		//{
+		//	return;
+		//}
 		if (Input.GetMouseButtonDown(0))
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -28,10 +28,18 @@ public class ClickSprite : MonoBehaviour
 
 		if (Input.GetMouseButtonUp(0))
 		{
-			float holdTime = Time.time - pressTime;
-			if (holdTime < clickDurationThreshold)
+			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			var hits = Physics2D.RaycastAll(ray.origin, ray.direction, Mathf.Infinity);
+			foreach (var hit in hits)
 			{
-				onClick?.Invoke();
+				if (hit.collider.transform == transform)
+				{
+					float holdTime = Time.time - pressTime;
+					if (holdTime < clickDurationThreshold)
+					{
+						onClick?.Invoke();
+					}
+				}
 			}
 		}
 	}
