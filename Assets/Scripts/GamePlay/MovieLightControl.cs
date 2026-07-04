@@ -5,6 +5,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class MovieLightControl : MonoBehaviour
 {
 	private Light2D screenLight;
+	public float minIntensity = 0.1f;
 	public float maxIntensity = 1.0f;
 	public float intensitySpeed = 0.3f;
 	public float intensitySpeed2 = 1;
@@ -20,7 +21,7 @@ public class MovieLightControl : MonoBehaviour
 	void Update()
 	{
 		float noise = Mathf.PerlinNoise1D(Time.time * intensitySpeed) * Mathf.PerlinNoise1D(Time.time * intensitySpeed2);
-		screenLight.intensity = noise * maxIntensity;
+		screenLight.intensity = Mathf.Lerp(minIntensity, maxIntensity, noise);
 
 		// 三个通道独立噪声
 		float r = Mathf.PerlinNoise1D(Time.time * redSpeed);
