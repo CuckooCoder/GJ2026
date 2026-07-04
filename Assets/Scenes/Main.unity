@@ -1891,6 +1891,7 @@ MonoBehaviour:
   mainSceneName: Main
   levels:
   - Level1
+  - Level2
   curLevelIndex: 0
 --- !u!4 &1626084744
 Transform:
