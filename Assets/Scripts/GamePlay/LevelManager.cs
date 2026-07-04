@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-	public float totalTime = 10;
+	public float totalTime = 20;
 	public float checkTime = 3;
 	protected Coroutine immediatelyCheckCoroutine;
 
-	private void Start()
+	protected virtual void Start()
 	{
 		GameManager.Instance.control = true;
 		TransitionEffect.Instance.FadeIn();
