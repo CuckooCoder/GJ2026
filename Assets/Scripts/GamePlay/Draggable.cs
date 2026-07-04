@@ -10,6 +10,10 @@ public class Draggable : MonoBehaviour
 
 	void Update()
 	{
+		if (!GameManager.Instance.control)
+		{
+			return;
+		}
 		// 鼠标按下开始拖拽
 		if (Input.GetMouseButtonDown(0))
 		{

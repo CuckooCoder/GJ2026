@@ -6,6 +6,10 @@ public class PlayerCursor : MonoBehaviour
 
 	void Update()
 	{
+		if (!GameManager.Instance.control)
+		{
+			return;
+		}
 		if (Input.GetMouseButtonUp(0))
 		{
 			transform.position = player.transform.position;

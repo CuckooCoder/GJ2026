@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Utils;
 
 public class Level2Manager : LevelManager
 {
@@ -10,6 +14,8 @@ public class Level2Manager : LevelManager
 	public GameObject end1Panell;
 	public GameObject end1Panel2;
 	public GameObject end1Panel3;
+	public Image shootImage;
+	public float shootTime = 0.3f;
 	Animator animator;
 	bool isPosed = false;
 	bool isOverlap = false;
@@ -30,18 +36,19 @@ public class Level2Manager : LevelManager
 		{
 			animator.enabled = true;
 			isPosed = true;
+			ChangePose(curPoseIndex);
 			return;
 		}
 		else
 		{
 			animator.enabled = false;
-			ChangePose();
+			ChangePose(curPoseIndex + 1);
 		}
 	}
 
-	public void ChangePose()
+	public void ChangePose(int index)
 	{
-		curPoseIndex = (curPoseIndex + 1) % poseSprites.Count;
+		curPoseIndex = index % poseSprites.Count;
 		playerSprite.sprite = poseSprites[curPoseIndex];
 		if (immediatelyCheckCoroutine != null)
 		{
@@ -52,37 +59,59 @@ public class Level2Manager : LevelManager
 
 	public override void CheckComplete()
 	{
+		GameManager.Instance.control = false;
 		if (!isOverlap || !isPosed)
 		{
-			Fail();
+			StartCoroutine(Shooting(Fail));
 			return;
 		}
 		switch (curPoseIndex)
 		{
 			case 0:
 				//剪刀手
-				Success();
+				StartCoroutine(Shooting(Success));
 				break;
 			case 1:
 				//拳头
-				endPanel.SetActive(true);
-				end1Panell.SetActive(true);
+				StartCoroutine(Shooting(() => {
+					endPanel.SetActive(true);
+					end1Panell.SetActive(true);
+				}));
 				break;
 			case 2:
 				//搞怪
-				endPanel.SetActive(true);
-				end1Panel2.SetActive(true);
+				StartCoroutine(Shooting(() => {
+					endPanel.SetActive(true);
+					end1Panel2.SetActive(true);
+				}));
 				break;
 			case 3:
 				//鄙视
-				endPanel.SetActive(true);
-				end1Panel3.SetActive(true);
+				StartCoroutine(Shooting(() => {
+					endPanel.SetActive(true);
+					end1Panel3.SetActive(true);
+				}));
 				break;
 		}
 	}
 
-	public override void Fail()
+	public void Shoot()
 	{
-		base.Fail();
+		StartCoroutine(Shooting(Success));
+	}
+
+	IEnumerator Shooting(Action onEnd = null)
+	{
+		float t = 0;
+		while (t < shootTime)
+		{
+			t += Time.deltaTime;
+			float value = EasingLerps.EasingLerp(EasingLerps.EasingInOutType.EaseOut, EasingLerps.EasingLerpsType.Sine, t / shootTime, 1, 0);
+			Color color = shootImage.color;
+			color.a = value;
+			shootImage.color = color;
+			yield return null;
+		}
+		onEnd?.Invoke();
 	}
 }

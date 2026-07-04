@@ -8,6 +8,7 @@ public class GameManager : SingletonMono<GameManager>
 	public string mainSceneName = "Main";
 	public List<string> levels;
 	public int curLevelIndex = 0;
+	public bool control = true;
 
 	public void LoadScene(int sceneIndex)
 	{

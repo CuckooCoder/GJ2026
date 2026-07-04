@@ -24,12 +24,12 @@ public class Level1Manager : LevelManager
 	public override void CheckComplete()
 	{
 		base.CheckComplete();
+		GameManager.Instance.control = false;
 		switch (curEmoIndex)
 		{
 			case 0:
 				//无表情
-				endPanel.SetActive(true);
-				end1Panell.SetActive(true);
+				Fail();
 				break;
 			case 1:
 				//笑
@@ -41,10 +41,5 @@ public class Level1Manager : LevelManager
 				Success();
 				break;
 		}
-	}
-
-	public override void Fail()
-	{
-		base.Fail();
 	}
 }

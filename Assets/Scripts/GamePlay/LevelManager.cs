@@ -8,9 +8,9 @@ public class LevelManager : MonoBehaviour
 	public float checkTime = 3;
 	protected Coroutine immediatelyCheckCoroutine;
 
-
 	private void Start()
 	{
+		GameManager.Instance.control = true;
 		TransitionEffect.Instance.FadeIn();
 		StartCoroutine(DelayInvoke(totalTime, CheckComplete));
 	}

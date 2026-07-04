@@ -13,6 +13,11 @@ public class FollowTarget : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (!GameManager.Instance.control)
+		{
+			rig.linearVelocity = Vector2.zero;
+			return;
+		}
 		Vector2 targetPos = target.position;
 
 		Vector2 delta = targetPos - rig.position;
