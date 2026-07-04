@@ -39,7 +39,7 @@ public class LevelManager : MonoBehaviour
 	public virtual void Fail()
 	{
 		StopAllCoroutines();
-		Reload();
+		GameManager.Instance.BadEnd();
 	}
 
 	public virtual IEnumerator DelayInvoke(float delay, Action action)

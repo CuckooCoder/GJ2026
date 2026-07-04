@@ -3,69 +3,72 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class ClickToTypeDialogue : MonoBehaviour
 {
-    public TMP_Text textUI;
-    public List<string> lines;
-    public float typeSpeed = 0.03f;
+	public TMP_Text textUI;
+	public List<string> lines;
+	public float typeSpeed = 0.03f;
+	public UnityEvent onEnd;
 
-    int index;
-    bool isTyping;
-    Coroutine co;
+	int index;
+	bool isTyping;
+	Coroutine co;
 
-    void Start()
-    {
-        index = 0;
-        StartTyping();
-    }
+	void Start()
+	{
+		index = 0;
+		StartTyping();
+	}
 
-    void Update()
-    {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            OnClick();
-        }
-    }
+	void Update()
+	{
+		if (Mouse.current.leftButton.wasPressedThisFrame)
+		{
+			OnClick();
+		}
+	}
 
-    void OnClick()
-    {
-        if (isTyping)
-        {
-            StopCoroutine(co);
-            textUI.text = lines[index];
-            isTyping = false;
-            return;
-        }
+	void OnClick()
+	{
+		if (isTyping)
+		{
+			StopCoroutine(co);
+			textUI.text = lines[index];
+			isTyping = false;
+			return;
+		}
 
-        index++;
+		index++;
 
-        if (index >= lines.Count)
-        {
-            textUI.text = "";
-            Debug.Log("END");
-            return;
-        }
+		if (index >= lines.Count)
+		{
+			textUI.text = "";
+			onEnd?.Invoke();
 
-        StartTyping();
-    }
+			return;
+		}
 
-    void StartTyping()
-    {
-        co = StartCoroutine(Type(lines[index]));
-    }
+		StartTyping();
+	}
 
-    IEnumerator Type(string s)
-    {
-        isTyping = true;
-        textUI.text = "";
+	void StartTyping()
+	{
+		co = StartCoroutine(Type(lines[index]));
+	}
 
-        foreach (char c in s)
-        {
-            textUI.text += c;
-            yield return new WaitForSeconds(typeSpeed);
-        }
+	IEnumerator Type(string s)
+	{
+		isTyping = true;
+		textUI.text = "";
 
-        isTyping = false;
-    }
+		foreach (char c in s)
+		{
+			textUI.text += c;
+			yield return new WaitForSeconds(typeSpeed);
+		}
+
+		isTyping = false;
+	}
 }

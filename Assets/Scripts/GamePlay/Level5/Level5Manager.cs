@@ -12,13 +12,19 @@ public class Level5Manager : LevelManager
 		if (isHight)
 		{
 			Debug.Log("Hight");
-			//Fail();
+			Fail();
 		}
 		else
 		{
 			Debug.Log("Low");
-			//Success();
+			Success();
 		}
+	}
+
+	public override void Success()
+	{
+		StopAllCoroutines();
+		GameManager.Instance.HappyEnd();
 	}
 
 	public void Check()

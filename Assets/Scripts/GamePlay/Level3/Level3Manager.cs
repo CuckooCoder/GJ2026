@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class Level3Manager : LevelManager
 	public GameObject endPanel;
 	public GameObject end1Panell;
 	public GameObject end1Panel2;
+	int sendMessageIndex = -1;
 
 	protected override void Start()
 	{
@@ -45,6 +47,26 @@ public class Level3Manager : LevelManager
 		StartCoroutine(SendMesaages(index));
 	}
 
+	public override void CheckComplete()
+	{
+		base.CheckComplete();
+		switch (sendMessageIndex)
+		{
+			case -1:
+				Fail();
+				break;
+			case 0:
+				Success();
+				break;
+			case 1:
+				Fail();
+				break;
+			case 2:
+				Fail();
+				break;
+		}
+	}
+
 	IEnumerator ReceiveMesaages()
 	{
 		yield return new WaitForSeconds(messageInterval);
@@ -59,22 +81,12 @@ public class Level3Manager : LevelManager
 
 	IEnumerator SendMesaages(int index)
 	{
+		sendMessageIndex = index;
 		handAnimator.enabled = true;
 		yield return new WaitForSeconds(messageInterval);
 		sendMessages[index].SetActive(true);
 		ScrollToBottomImmediately();
 		yield return new WaitForSeconds(checkTime);
-		switch (index)
-		{
-			case 0:
-				Success();
-				break;
-			case 1:
-				Fail();
-				break;
-			case 2:
-				Fail();
-				break;
-		}
+		CheckComplete();
 	}
 }
