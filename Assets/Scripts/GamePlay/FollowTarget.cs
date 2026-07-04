@@ -2,6 +2,7 @@
 
 public class FollowTarget : MonoBehaviour
 {
+	public Transform pivot;
 	public Transform target;
 	public float speed = 2f;
 	Rigidbody2D rig;
@@ -20,7 +21,15 @@ public class FollowTarget : MonoBehaviour
 		}
 		Vector2 targetPos = target.position;
 
-		Vector2 delta = targetPos - rig.position;
+		Vector2 delta = Vector2.zero;
+		if(pivot != null)
+		{
+			delta = targetPos - (Vector2)pivot.position;
+		}
+		else
+		{
+			delta = targetPos - rig.position;
+		}
 		Vector2 moveDir = delta.normalized;
 		float stopThreshold = speed * Time.fixedDeltaTime * 2;
 		if (delta.magnitude < stopThreshold)

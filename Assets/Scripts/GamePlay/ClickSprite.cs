@@ -9,10 +9,10 @@ public class ClickSprite : MonoBehaviour
 
 	void Update()
 	{
-		//if (!GameManager.Instance.control)
-		//{
-		//	return;
-		//}
+		if (!GameManager.Instance.control)
+		{
+			return;
+		}
 		if (Input.GetMouseButtonDown(0))
 		{
 			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);

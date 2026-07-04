@@ -10,6 +10,7 @@ public class Level4Manager : LevelManager
 	public Sprite standSprite;
 	public Animator bossAnimator;
 	public List<Animator> npcAnimators;
+	public GameObject film;
 	public bool isPlayerStandUp = false;
 
 	protected override void Start()
@@ -28,7 +29,8 @@ public class Level4Manager : LevelManager
 		}
 		else
 		{
-			Success();
+			film.SetActive(true);
+			StartCoroutine(DelayInvoke(1f, Success));
 		}
 	}
 

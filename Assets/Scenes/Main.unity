@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2507267343785799597, guid: f950a78ea2731af458d948eced5ff593, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4646657430731030772, guid: f950a78ea2731af458d948eced5ff593, type: 3}
       propertyPath: m_Pivot.x
@@ -1605,6 +1605,7 @@ MonoBehaviour:
   - Level2
   - Level3
   - Level4
+  - Level5
   curLevelIndex: 0
   control: 1
 --- !u!4 &1626084744
