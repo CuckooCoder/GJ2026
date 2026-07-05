@@ -194,7 +194,7 @@ MonoBehaviour:
   persistent: 1
   autoUnparentOnAwake: 1
   maxRadius: 2.2
-  fadeDuration: 1
+  fadeDuration: 0.5
   image: {fileID: 5927598846484609426}
 --- !u!82 &6605926699433662112
 AudioSource:

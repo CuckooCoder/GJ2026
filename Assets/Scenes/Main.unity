@@ -2598,17 +2598,19 @@ MonoBehaviour:
   happyEndSceneName: HE
   badEndSceneName: BE
   levels:
+  - Opening
   - Level1
   - Level2
   - Level3
   - Level4
   - Level5
   levelBgms:
-  - {fileID: 8300000, guid: 6d2d384e18fe76043bd721f5537db46d, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 7db0c7bd1961f534d9437ce902fee91d, type: 3}
   - {fileID: 8300000, guid: 940e1ae88b688d54faca918414deb945, type: 3}
   - {fileID: 8300000, guid: 657cecb7d5012cc4a87272197038978f, type: 3}
-  - {fileID: 8300000, guid: 7315d57b83e244b43b8d2e40570ac4c1, type: 3}
-  - {fileID: 8300000, guid: 7315d57b83e244b43b8d2e40570ac4c1, type: 3}
+  - {fileID: 8300000, guid: e688fcc97fd83c644ab330d80726fd69, type: 3}
+  - {fileID: 8300000, guid: e688fcc97fd83c644ab330d80726fd69, type: 3}
   mainBgm: {fileID: 8300000, guid: 60eeeccfe6644f94d9a7e89409ff22c6, type: 3}
   curLevelIndex: 0
   control: 1

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using Utils;
+using static UnityEngine.Rendering.DebugUI;
 
 public class TransitionEffect : SingletonMono<TransitionEffect>
 {
@@ -15,19 +16,33 @@ public class TransitionEffect : SingletonMono<TransitionEffect>
 	private void Start()
 	{
 		audioSource = GetComponent<AudioSource>();
-		FadeIn();
+		FadeIn(true);
 	}
 
-	public void FadeIn()
+	public void FadeIn(bool immediately = false)
 	{
-		audioSource.Play();
-		StartCoroutine(Fade(0f, maxRadius, fadeDuration));
+		if (immediately)
+		{
+			image.material.SetFloat("_Radius", maxRadius);
+		}
+		else
+		{
+			audioSource.Play();
+			StartCoroutine(Fade(0f, maxRadius, fadeDuration));
+		}
 	}
 
-	public void FadeOut(Action onEnd = null)
+	public void FadeOut(Action onEnd = null, bool immediately = false)
 	{
-		audioSource.Play();
-		StartCoroutine(Fade(maxRadius, 0f, fadeDuration, onEnd));
+		if (immediately)
+		{
+			image.material.SetFloat("_Radius", 0);
+		}
+		else
+		{
+			audioSource.Play();
+			StartCoroutine(Fade(maxRadius, 0f, fadeDuration, onEnd));
+		}
 	}
 
 	IEnumerator Fade(float start, float end, float time, Action onEnd = null)
