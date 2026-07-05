@@ -319,20 +319,6 @@
                 },
                 "m_SlotId": 0
             }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "eecbeb8199674ebab0522f890abb3a55"
-                },
-                "m_SlotId": 1
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "208e0a3286e0431f9be7c5fa975b25d4"
-                },
-                "m_SlotId": 0
-            }
         }
     ],
     "m_VertexContext": {
@@ -2132,10 +2118,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -382.8409729003906,
-            "y": 80.1590576171875,
-            "width": 208.0,
-            "height": 278.0
+            "x": -381.9999694824219,
+            "y": -0.000005602836608886719,
+            "width": 208.0000457763672,
+            "height": 277.9999694824219
         }
     },
     "m_Slots": [
@@ -2171,9 +2157,9 @@
     "m_ShaderOutputName": "BaseColor",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.5,
-        "y": 0.5,
-        "z": 0.5
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
     },
     "m_DefaultValue": {
         "x": 0.5,
