@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Cup : MonoBehaviour
 {
 	AudioSource audioSource;
+	public List<AudioClip> audioClips;
 
 	void Start()
 	{
@@ -13,7 +16,9 @@ public class Cup : MonoBehaviour
 	{
 		if (!audioSource.isPlaying)
 		{
-			audioSource.Play();
+			int randomIndex = Random.Range(0, audioClips.Count);
+			AudioClip randomClip = audioClips[randomIndex];
+			audioSource.PlayOneShot(randomClip);
 		}
 	}
 }

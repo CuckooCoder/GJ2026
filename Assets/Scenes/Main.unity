@@ -2612,6 +2612,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e688fcc97fd83c644ab330d80726fd69, type: 3}
   - {fileID: 8300000, guid: e688fcc97fd83c644ab330d80726fd69, type: 3}
   mainBgm: {fileID: 8300000, guid: 60eeeccfe6644f94d9a7e89409ff22c6, type: 3}
+  HEBgm: {fileID: 8300000, guid: 28b4e50cceecfc1418c9b9b5eb12388e, type: 3}
+  BEBgm: {fileID: 8300000, guid: 395c892adac100445a2663433be3e965, type: 3}
   curLevelIndex: 0
   control: 1
   audioSource: {fileID: 0}
