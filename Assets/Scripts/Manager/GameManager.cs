@@ -97,7 +97,7 @@ public class GameManager : SingletonMono<GameManager>
 
 	public void SpecialEnd(string sceneName)
 	{
-		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(sceneName); PlayBgm(HEBgm, false); });
+		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(sceneName); PlayBgm(BEBgm, false); });
 	}
 
 	public void SetPause(bool pause)
