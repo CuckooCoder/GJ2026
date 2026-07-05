@@ -465,7 +465,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -940,6 +940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level5Manager
   totalTime: 20
   checkTime: 1
+  specialEndSceneNames: []
   audioSource: {fileID: 0}
   isHight: 0
   isLow: 0
