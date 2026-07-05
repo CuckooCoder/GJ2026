@@ -13,10 +13,9 @@ public class TransitionEffect : SingletonMono<TransitionEffect>
 	public Image image;
 	AudioSource audioSource;
 
-	private void Start()
+	protected override void Init()
 	{
 		audioSource = GetComponent<AudioSource>();
-		FadeIn(true);
 	}
 
 	public void FadeIn(bool immediately = false)
