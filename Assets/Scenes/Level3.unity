@@ -799,9 +799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level3Manager
   totalTime: 20
   checkTime: 3
-  specialEndSceneNames:
-  - Level3End1
-  - Level3End2
+  specialEndSceneNames: []
   audioSource: {fileID: 0}
   scrollRect: {fileID: 1677321897}
   messages:
@@ -815,7 +813,7 @@ MonoBehaviour:
   messageInterval: 1
   buttonRoot: {fileID: 639824790}
   handAnimator: {fileID: 1920607249}
-  messageClip: {fileID: 8300000, guid: 061f41bf7d45ccf478e25478cccd3a38, type: 3}
+  messageClip: {fileID: 8300000, guid: 2dc6571336148b843ab25396b803c511, type: 3}
 --- !u!82 &644296623
 AudioSource:
   m_ObjectHideFlags: 0
