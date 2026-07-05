@@ -1,10 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Video;
 
 public class OpeningManager : MonoBehaviour
 {
 	public List<VideoClip> videoClips;
+	public List<string> lines;
+	public TMP_Text textUI;
 
 
 	public VideoPlayer videoPlayer;
@@ -16,6 +20,7 @@ public class OpeningManager : MonoBehaviour
 
 	void Start()
 	{
+		TransitionEffect.Instance.FadeIn();
 		// 绑定播放结束事件
 		videoPlayer.loopPointReached += OnVideoFinish;
 
@@ -31,6 +36,7 @@ public class OpeningManager : MonoBehaviour
 		waitForClick = false;
 		videoPlayer.clip = videoClips[index];
 		videoPlayer.Play();
+		textUI.text = lines[index];
 	}
 
 	// 视频播放完毕回调
