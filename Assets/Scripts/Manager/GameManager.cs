@@ -36,8 +36,15 @@ public class GameManager : SingletonMono<GameManager>
 
 	public void PlayBgm(AudioClip clip)
 	{
-		audioSource.clip = clip;
-		audioSource.Play();
+		if (clip != null)
+		{
+			audioSource.clip = clip;
+			audioSource.Play();
+		}
+		else
+		{
+			audioSource.Stop();
+		}
 	}
 
 	public void LoadScene(int sceneIndex)
