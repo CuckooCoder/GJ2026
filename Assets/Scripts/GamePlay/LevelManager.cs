@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
 	public float totalTime = 20;
 	public float checkTime = 3;
+	public List<string> specialEndSceneNames;
 	public AudioSource audioSource;
 	protected Coroutine immediatelyCheckCoroutine;
 
