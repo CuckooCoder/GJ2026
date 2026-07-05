@@ -14,9 +14,6 @@ public class Level3Manager : LevelManager
 	public GameObject buttonRoot;
 	public Animator handAnimator;
 	public AudioClip messageClip;
-	public GameObject endPanel;
-	public GameObject end1Panell;
-	public GameObject end1Panel2;
 	int sendMessageIndex = -1;
 
 	protected override void Start()
@@ -54,16 +51,19 @@ public class Level3Manager : LevelManager
 		switch (sendMessageIndex)
 		{
 			case -1:
+				//未回复
 				Fail();
 				break;
 			case 0:
 				Success();
 				break;
 			case 1:
-				Fail();
+				//回问号
+				GameManager.Instance.SpecialEnd(specialEndSceneNames[0]);
 				break;
 			case 2:
-				Fail();
+				//回@所有人
+				GameManager.Instance.SpecialEnd(specialEndSceneNames[1]);
 				break;
 		}
 	}

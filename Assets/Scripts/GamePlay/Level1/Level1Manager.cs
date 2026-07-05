@@ -6,8 +6,6 @@ public class Level1Manager : LevelManager
 	public SpriteRenderer playerSprite;
 	public List<Sprite> emoSprites;
 	public int curEmoIndex = 0;
-	public GameObject endPanel;
-	public GameObject end1Panel1;
 
 	public void ChangeEmo()
 	{
@@ -32,8 +30,8 @@ public class Level1Manager : LevelManager
 				break;
 			case 1:
 				//笑
-				endPanel.SetActive(true);
-				end1Panel1.SetActive(true);
+				StopAllCoroutines();
+				GameManager.Instance.SpecialEnd(specialEndSceneNames[0]);
 				break;
 			case 2:
 				//哭

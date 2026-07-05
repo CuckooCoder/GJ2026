@@ -10,10 +10,6 @@ public class Level2Manager : LevelManager
 	public SpriteRenderer playerSprite;
 	public List<Sprite> poseSprites;
 	public int curPoseIndex = 0;
-	public GameObject endPanel;
-	public GameObject end1Panell;
-	public GameObject end1Panel2;
-	public GameObject end1Panel3;
 	public Image shootImage;
 	public float shootTime = 0.3f;
 	public AudioClip shootAudioClip;
@@ -75,22 +71,19 @@ public class Level2Manager : LevelManager
 			case 1:
 				//拳头
 				StartCoroutine(Shooting(() => {
-					endPanel.SetActive(true);
-					end1Panell.SetActive(true);
+					GameManager.Instance.SpecialEnd(specialEndSceneNames[0]);
 				}));
 				break;
 			case 2:
 				//搞怪
 				StartCoroutine(Shooting(() => {
-					endPanel.SetActive(true);
-					end1Panel2.SetActive(true);
+					GameManager.Instance.SpecialEnd(specialEndSceneNames[1]);
 				}));
 				break;
 			case 3:
 				//鄙视
 				StartCoroutine(Shooting(() => {
-					endPanel.SetActive(true);
-					end1Panel3.SetActive(true);
+					GameManager.Instance.SpecialEnd(specialEndSceneNames[2]);
 				}));
 				break;
 		}

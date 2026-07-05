@@ -85,6 +85,11 @@ public class GameManager : SingletonMono<GameManager>
 		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(badEndSceneName); audioSource.Stop(); });
 	}
 
+	public void SpecialEnd(string sceneName)
+	{
+		TransitionEffect.Instance.FadeOut(() => { SceneManager.LoadScene(sceneName); audioSource.Stop(); });
+	}
+
 	public void SetPause(bool pause)
 	{
 		Time.timeScale = pause ? 0 : 1;
