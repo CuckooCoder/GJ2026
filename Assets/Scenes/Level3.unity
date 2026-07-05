@@ -800,8 +800,8 @@ MonoBehaviour:
   totalTime: 20
   checkTime: 3
   specialEndSceneNames:
-  - Level3End1
   - Level3End2
+  - Level3End1
   audioSource: {fileID: 0}
   scrollRect: {fileID: 1677321897}
   messages:
