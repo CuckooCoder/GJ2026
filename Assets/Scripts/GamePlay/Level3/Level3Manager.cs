@@ -87,6 +87,7 @@ public class Level3Manager : LevelManager
 		handAnimator.enabled = true;
 		yield return new WaitForSeconds(messageInterval);
 		sendMessages[index].SetActive(true);
+		audioSource.PlayOneShot(messageClip);
 		ScrollToBottomImmediately();
 		yield return new WaitForSeconds(checkTime);
 		CheckComplete();
