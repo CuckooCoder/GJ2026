@@ -50,10 +50,11 @@ public class TransitionEffect : SingletonMono<TransitionEffect>
 		while (t < time)
 		{
 			t += Time.deltaTime;
-			float value = EasingLerps.EasingLerp(EasingLerps.EasingInOutType.EaseIn, EasingLerps.EasingLerpsType.Sine, t / time, start, end);
+			float value = Mathf.Lerp(start, end, Mathf.Clamp01(t / time));
 			image.material.SetFloat("_Radius", value);
 			yield return null;
 		}
+		image.material.SetFloat("_Radius", end);
 		onEnd?.Invoke();
 	}
 }
