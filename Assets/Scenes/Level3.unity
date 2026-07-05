@@ -799,7 +799,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Level3Manager
   totalTime: 20
   checkTime: 3
-  specialEndSceneNames: []
+  specialEndSceneNames:
+  - Level3End1
+  - Level3End2
   audioSource: {fileID: 0}
   scrollRect: {fileID: 1677321897}
   messages:
