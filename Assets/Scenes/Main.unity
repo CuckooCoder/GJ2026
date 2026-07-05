@@ -2605,7 +2605,7 @@ MonoBehaviour:
   - Level4
   - Level5
   levelBgms:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 80845496497f434489e055bdfdb58e9f, type: 3}
   - {fileID: 8300000, guid: 7db0c7bd1961f534d9437ce902fee91d, type: 3}
   - {fileID: 8300000, guid: 940e1ae88b688d54faca918414deb945, type: 3}
   - {fileID: 8300000, guid: 657cecb7d5012cc4a87272197038978f, type: 3}
